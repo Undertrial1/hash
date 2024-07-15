@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Найти PID процесса xmrig
+pid=$(pgrep xmrig)
+
+# Проверить, найден ли процесс
+if [ -z "$pid" ]; then
+    echo "Процесс xmrig не найден."
+    exit 1
+fi
+
+# Получить полную команду запуска процесса по PID
+command=$(ps -p $pid -o args=)
+
+# Вывести команду
+echo "Полная команда процесса xmrig: $command"
